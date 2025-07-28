@@ -8,6 +8,9 @@
  * API keys should be injected at runtime and never hard‑coded.
  */
 
+require('dotenv').config();
+const cors = require('cors');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -22,6 +25,7 @@ const ragService = require('./services/ragService');
 function createApp() {
   const app = express();
   app.use(bodyParser.json());
+      app.use(cors());
 
   // Health check
   app.get('/health', (req, res) => {
